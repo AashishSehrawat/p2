@@ -1,103 +1,205 @@
+'use client'
+
+import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+import mainImage from "../assets/mainSideImage.webp";
+import check from "../assets/check.svg";
+import boostImg from "../assets/boostImg.webp";
+import ai from "../assets/serviceSvg/aiSupport.webp";
+import person from "../assets/testimonial/4.png";
+
+import { Button } from "@/components/ui/button";
+import ServiceCard from "@/components/ServiceCard";
+import { TestimonialNextArrows, TestimonialPrevArrows } from "@/components/TestimonialArrows";
+import TestimonialCardCom from "@/components/TestimonialCardCom";
+
+export default function Home() {
+  // Service data section
+  const serviceData = [
+    {
+      heading: "Smart Career Start",
+      img: ai,
+      content:
+        "AI-driven assessments to unlock the best career paths for students.",
+    },
+    {
+      heading: "Future Fit",
+      img: ai,
+      content:
+        "Personalized career roadmaps based on personality, skills, and market trends.",
+    },
+    {
+      heading: "Mentor Magic",
+      img: ai,
+      content:
+        "Real insights from top college alumni for informed career decisions.",
+    },
+    {
+      heading: "Pathfinder Pro",
+      img: ai,
+      content:
+        "Science-backed guidance to match students with their ideal careers.",
+    },
+
+    {
+      heading: "Trend Track",
+      img: ai,
+      content:
+        "Career advice aligned with emerging job markets and future opportunities.",
+    },
+    {
+      heading: "Unlock Potential",
+      img: ai,
+      content:
+        "Discover hidden strengths and ideal career fits with AI-powered analysis.",
+    },
+  ];
+
+  // testimonial data
+  const testimonialData = [
+    {
+      name: "Nittin",
+      img: person,
+      college: "IIT Delhi",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus culpa dolorum eius ut? Id vel odit dolorem, quo aut voluptas beatae nostrum nemo! Veniam similique corrupti dolores nobis magnam iste sequi tempora ex aperiam labore.",
+    },
+    {
+      name: "ASH",
+      img: person,
+      college: "IIT Delhi",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus culpa dolorum eius ut? Id vel odit dolorem, quo aut voluptas beatae nostrum nemo! Veniam similique corrupti dolores nobis magnam iste sequi tempora ex aperiam labore.",
+    },
+    {
+      name: "ankitn",
+      img: person,
+      college: "IIT Delhi",
+      content:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus culpa dolorum eius ut? Id vel odit dolorem, quo aut voluptas beatae nostrum nemo! Veniam similique corrupti dolores nobis magnam iste sequi tempora ex aperiam labore.",
+    },
+  ];
+
+  // setting for react slider
+  const settingsTest = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    pauseOnHover: true,
+    nextArrow: <TestimonialNextArrows />,
+    prevArrow: <TestimonialPrevArrows />,
+  };
+
+  return (
+    <div>
+      {/* main section */}
+      <div className="bg-blue-50 px-26 py-10 w-full">
+        <div className="flex w-full gap-20">
+          <div className="w-1/2 flex items-center">
+            <div className="flex flex-col gap-8">
+              <h1 className="text-6xl">Guiding Future, Building Careers</h1>
+              <p className="text-xl">
+                We empower students to discover their true potential and make
+                confident career decisions. Join us to explore the right path
+                with expert counseling and mentorship.
+              </p>
+              <Link href="/signUp" className="w-fit">
+                <Button className="bg-[var(--blue)] text-[1.05rem] w-44 transition duration-300 cursor-pointer">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className="w-1/2">
+            <Image src={mainImage} alt="Carrer" />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* boost section */}
+      <div className="px-26 py-10 w-full">
+        <div className="container">
+          <div className="flex gap-20 w-full">
+            <div className="w-1/2">
+              <Image src={boostImg} alt="" />
+            </div>
+            <div className="w-1/2 flex items-center">
+              <div className="flex flex-col gap-4">
+                <h2 className="text-4xl">Boost College Getting</h2>
+                <div>
+                  <div className="flex gap-2">
+                    <Image src={check} alt="check mark" width={20} />
+                    <span>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Porro, ea facere nulla dignissimos ab eaque!
+                    </span>
+                  </div>
+                  <div className="flex gap-2 mt-2">
+                    <Image src={check} alt="check mark" width={20} />
+                    <span>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Porro, ea facere nulla dignissimos ab eaque!
+                    </span>
+                  </div>
+                </div>
+                <Link href="/signUp" className="w-fit">
+                  <Button className="bg-[var(--blue)] text-[1.05rem] w-44 transition duration-300 cursor-pointer">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* service secion */}
+      <div className="bg-blue-50 px-26 py-10 w-full">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-4xl text-center">Services We Provide</h2>
+          <div className="flex flex-wrap w-full">
+            {serviceData.map((item, index) => (
+              <ServiceCard
+                key={index}
+                heading={item.heading}
+                content={item.content}
+                img={item.img}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* testimonial section */}
+      <div className="testimonialSection">
+        <div className="container">
+          <h2>Discover What Our Students Speak</h2>
+          <div>
+            <Slider {...settingsTest}>
+              {testimonialData.map((item, index) => (
+                <TestimonialCardCom
+                  key={index}
+                  name={item.name}
+                  img={item.img}
+                  college={item.college}
+                  content={item.content}
+                />
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
