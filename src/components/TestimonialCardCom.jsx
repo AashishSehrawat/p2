@@ -3,20 +3,20 @@ import Image from "next/image";
 
 const TestimonialCardCom = ({name, img, college, content}) => {
   return (
-    <div className='testimonialCard'>
-        <div className='testiStars'>
-            <Image src={star} alt="" />
-            <Image src={star} alt="" />
-            <Image src={star} alt="" />
-            <Image src={star} alt="" />
-            <Image src={star} alt="" />
+    <div className='flex flex-col gap-4 border rounded-xl p-10 mx-2.5'>
+        <div className='flex'>
+            <Image src={star} alt="" width={25}/>
+            <Image src={star} alt="" width={25}/>
+            <Image src={star} alt="" width={25}/>
+            <Image src={star} alt="" width={25}/>
+            <Image src={star} alt="" width={25}/>
         </div>
-        <p className='testiContent'>
+        <p className=''>
             {content}
         </p>
-        <div className='testiUserDetail'>
-            <Image src={img} alt="" />
-            <div className='testiUserName'>
+        <div className='flex gap-4'>
+            <Image src={img} alt="" width={70}/>
+            <div className='self-center'>
                 <h4> {name} </h4>
                 <p> {college} </p>
             </div>

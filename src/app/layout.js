@@ -1,6 +1,5 @@
 import { Lato, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header/Header";
 
 // Define Lato for headings (with 'variable' for CSS flexibility)
 const lato = Lato({
@@ -25,8 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${lato.variable} ${nunitoSans.variable}`}>
       <body>
-        <Header />
-        <main className="pt-20">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
