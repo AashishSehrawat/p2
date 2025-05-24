@@ -31,8 +31,16 @@ import {
   TestimonialPrevArrows,
 } from "@/components/TestimonialArrows";
 import TestimonialCardCom from "@/components/TestimonialCardCom";
+import { useRef } from "react";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const contactRef = useRef(null);
+
   // Service data section
   const serviceData = [
     {
@@ -116,8 +124,14 @@ export default function Home() {
 
   return (
     <div>
+      <Header 
+        homeRef={homeRef}
+        servicesRef={servicesRef}
+        aboutRef={aboutRef}
+        contactRef={contactRef}
+      />
       {/* main section */}
-      <div className="bg-blue-50 px-38 py-10 w-full">
+      <div ref={homeRef} className="bg-blue-50 px-38 py-10 w-full relative top-20">
         <div className="flex w-full gap-20">
           <div className="w-1/2 flex items-center">
             <div className="flex flex-col gap-8">
@@ -178,7 +192,7 @@ export default function Home() {
       </div>
 
       {/* service secion */}
-      <div className="bg-blue-50 px-38 py-10 w-full">
+      <div ref={servicesRef} className="bg-blue-50 px-38 py-10 w-full">
         <div className="flex flex-col gap-4">
           <h2 className="text-4xl text-center">Services We Provide</h2>
           <div className="flex flex-wrap w-full">
@@ -213,7 +227,7 @@ export default function Home() {
       </div>
 
       {/* about section */}
-      <div className="w-full px-38 py-10">
+      <div ref={aboutRef} className="w-full px-38 py-10">
         <div className="flex w-full gap-20">
           <div className="flex items-center justify-center w-1/2">
             <div className="flex flex-col gap-4">
@@ -249,7 +263,7 @@ export default function Home() {
       </div>
 
       {/* conatct section */}
-      <div className="w-full px-38 py-10 bg-blue-50">
+      <div ref={contactRef} className="w-full px-38 py-10 bg-blue-50">
         <div className="flex gap-20 w-full">
           <div className="w-1/2 flex flex-col gap-6 items-center justify-center">
             <Image src={qr} alt="Qr code" className="w-[400] rounded-md" />
@@ -306,6 +320,13 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <Footer 
+        homeRef={homeRef}
+        servicesRef={servicesRef}
+        aboutRef={aboutRef}
+        contactRef={contactRef}
+      />
     </div>
   );
 }
