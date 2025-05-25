@@ -131,7 +131,7 @@ export default function Home() {
         contactRef={contactRef}
       />
       {/* main section */}
-      <div ref={homeRef} className="bg-blue-50 px-38 py-10 w-full relative top-20">
+      <div ref={homeRef} className="bg-blue-50 px-38 py-10 w-full mt-20">
         <div className="flex w-full gap-20">
           <div className="w-1/2 flex items-center">
             <div className="flex flex-col gap-8">

@@ -21,7 +21,7 @@ const Header = ({ homeRef, aboutRef, servicesRef, contactRef }) => {
 
   return (
     <div
-      className={`fixed w-full z-99 py-4 px-26 transition duration-700 ${
+      className={`fixed w-full z-99 py-4 px-26 transition duration-700 top-0 ${
         hasScrolled
           ? "bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]"
           : "shadow-none"
